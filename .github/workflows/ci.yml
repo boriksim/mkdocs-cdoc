@@ -23,5 +23,14 @@ jobs:
           python -m pip install --upgrade pip
           pip install -e .[dev]
 
+      - name: Static analysis with pylint
+        run: pylint mkdocs_cdoc/ --disable=C0114,C0115,C0116,R0903,R0913,R0914,R0915,C0301,W0511 --fail-under=7.0
+
+      - name: Static analysis with mypy
+        run: mypy --strict mkdocs_cdoc/
+
       - name: Run unit and integration tests
         run: pytest tests/ -v
+
+      - name: Generate coverage report
+        run: pytest --cov=mkdocs_cdoc --cov-report=term-missing tests/
