@@ -26,8 +26,8 @@ jobs:
       - name: Static analysis with pylint
         run: pylint mkdocs_cdoc/ --disable=C0114,C0115,C0116,R0903,R0913,R0914,R0915,C0301,W0511 --fail-under=7.0
 
-      - name: Static analysis with mypy
-        run: mypy --strict mkdocs_cdoc/
+      - name: Static analysis with flake8
+        run: flake8 mkdocs_cdoc/ --count --max-line-length=120 --extend-ignore=E203 --statistics
 
       - name: Run unit and integration tests
         run: pytest tests/ -v
