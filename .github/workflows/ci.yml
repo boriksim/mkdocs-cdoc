@@ -76,24 +76,6 @@ jobs:
           pip install -e '.[dev]'
           pip install pytest-cov
 
-      - name: Run Symbol Registry Tests
-#        continue-on-error: true
-        run: |
-          echo "=== TestSymbolRegistry: Symbol indexing and resolution ==="
-          pytest tests/test_cdoc.py::TestSymbolRegistry -v --tb=short
-
-      - name: Run Cross-Reference Resolution Tests
-#        continue-on-error: true
-        run: |
-          echo "=== TestXrefResolution: reST roles, auto-linking, backticks ==="
-          pytest tests/test_cdoc.py::TestXrefResolution -v --tb=short
-
-      - name: Run File Cross-References Tests
-#        continue-on-error: true
-        run: |
-          echo "=== TestFileXref: Cross-references between source groups ==="
-          pytest tests/test_cdoc.py::TestFileXref -v --tb=short
-
       - name: Run all tests
 #        continue-on-error: true
         run: |
